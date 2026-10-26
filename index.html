@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Udio Studio — Photography & Software</title>
+  <meta name="description" content="Udio Studio is a small studio for photography and IT consulting: full-stack development and AI implementations.">
+  <meta property="og:title" content="Udio Studio — Photography & Software">
+  <meta property="og:description" content="Light and logic. Photography, full-stack development and AI implementations.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%23e8432e'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="grain" aria-hidden="true">
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noise)"/>
+  </svg>
+
+  <header class="nav">
+    <a href="#top" class="logo"><span class="dot"></span>Udio Studio</a>
+    <nav>
+      <a href="#photography">Photography</a>
+      <a href="#engineering">Engineering</a>
+      <a href="#about">Studio</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <button class="menu-close">Close</button>
+    <a href="#photography"><span>01</span>Photography</a>
+    <a href="#engineering"><span>02</span>Engineering</a>
+    <a href="#about"><span>03</span>Studio</a>
+    <a href="#contact"><span>04</span>Contact</a>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow mono">Est. studio for light &amp; logic</p>
+      <div class="hero-stage">
+        <h1 class="hero-title">
+          <span class="line">Udio</span>
+          <span class="line italic">studio<span class="sun" aria-hidden="true"></span></span>
+        </h1>
+      </div>
+      <div class="hero-foot">
+        <p class="lede">We make <em>images</em> and we make <em>software</em>.<br>Two crafts, one obsession: getting the details right.</p>
+        <a href="#contact" class="badge" aria-label="Start a project">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+            <text textLength="486" lengthAdjust="spacing"><textPath href="#circle" textLength="486" lengthAdjust="spacing">photography · full stack · ai · light · logic · </textPath></text>
+          </svg>
+          <span class="badge-arrow">↘</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true" data-nav="light">
+      <div class="marquee-track">
+        <span>Portraits</span><i>✺</i><span>Editorial</span><i>✺</i><span>Brand imagery</span><i>✺</i><span>Web apps</span><i>✺</i><span>APIs &amp; cloud</span><i>✺</i><span>LLM integrations</span><i>✺</i><span>AI agents</span><i>✺</i>
+        <span>Portraits</span><i>✺</i><span>Editorial</span><i>✺</i><span>Brand imagery</span><i>✺</i><span>Web apps</span><i>✺</i><span>APIs &amp; cloud</span><i>✺</i><span>LLM integrations</span><i>✺</i><span>AI agents</span><i>✺</i>
+      </div>
+    </div>
+
+    <!-- PHOTOGRAPHY -->
+    <section id="photography" class="darkroom" data-nav="light">
+      <div class="section-head">
+        <span class="num mono">01</span>
+        <h2>Photo<em>graphy</em></h2>
+        <p class="section-intro">Portraits, editorial and brand work. Natural light when we can get it, careful light when we can't. Every frame is edited by hand.</p>
+      </div>
+
+      <div class="gallery">
+        <figure class="frame f1 reveal"><div class="photo"><img data-tone="light" src="images/portrait.jpg" alt="Studio portrait of a smiling bearded man in an olive shirt on a white background" style="object-position: 50% 35%" loading="lazy"></div><figcaption class="mono">No. 01 — Portrait</figcaption></figure>
+        <figure class="frame f2 reveal"><div class="photo"><img src="images/event.jpg" alt="Artist performing on stage in front of large screens, crowd filming with their phones in red light" loading="lazy"></div><figcaption class="mono">No. 02 — Event</figcaption></figure>
+        <figure class="frame f3 reveal"><div class="photo"><img src="images/landscape.jpg" alt="Stockholm waterfront and marina at blue hour, city lights reflecting in the water" style="object-position: 50% 55%" loading="lazy"></div><figcaption class="mono">No. 03 — Landscape</figcaption></figure>
+        <figure class="frame f4 reveal"><div class="photo"><img src="images/product.jpg" alt="Low-angle shot of a silver Volvo sedan in front of a glass showroom" style="object-position: 42% 50%" loading="lazy"></div><figcaption class="mono">No. 04 — Product</figcaption></figure>
+        <figure class="frame f5 reveal"><div class="photo"><img src="images/editorial.jpg" alt="Black and white photo of two men shaking hands on an ornate bench in front of a wall of whisky barrels" loading="lazy"></div><figcaption class="mono">No. 05 — Editorial</figcaption></figure>
+      </div>
+
+      <ul class="offer">
+        <li><span class="mono">a.</span> Portraits &amp; headshots</li>
+        <li><span class="mono">b.</span> Editorial &amp; magazine</li>
+        <li><span class="mono">c.</span> Brand &amp; product imagery</li>
+        <li><span class="mono">d.</span> Events &amp; documentary</li>
+      </ul>
+    </section>
+
+    <!-- ENGINEERING -->
+    <section id="engineering" class="engineering">
+      <div class="section-head">
+        <span class="num mono">02</span>
+        <h2>Engin<em>eering</em></h2>
+        <p class="section-intro">IT consulting for teams that want things built properly. From the first sketch to production, and the AI pieces that actually earn their place.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-top"><span class="mono">/full-stack</span><span class="glyph">◐</span></div>
+          <h3>Full-stack development</h3>
+          <p>Web applications, APIs and the infrastructure under them. Clean front ends, solid back ends, sensible cloud setups that don't surprise you on the invoice.</p>
+          <ul class="tags mono"><li>TypeScript</li><li>React / Vue</li><li>Node</li><li>Python</li><li>Postgres</li><li>Cloud</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="card-top"><span class="mono">/ai</span><span class="glyph">✺</span></div>
+          <h3>AI implementations</h3>
+          <p>LLM integrations, agents, retrieval over your own documents and workflow automation. We start with the problem, prototype quickly, and ship what holds up.</p>
+          <ul class="tags mono"><li>LLMs</li><li>Agents</li><li>RAG</li><li>Automation</li><li>Evaluation</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="card-top"><span class="mono">/advisory</span><span class="glyph">◇</span></div>
+          <h3>Technical advisory</h3>
+          <p>A second pair of eyes on architecture, code and roadmaps. Useful before a big build, when a project has stalled, or when you're deciding where AI fits.</p>
+          <ul class="tags mono"><li>Architecture</li><li>Code review</li><li>AI strategy</li></ul>
+        </article>
+      </div>
+
+      <div class="terminal reveal" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i><span class="mono">udio@studio ~</span></div>
+        <pre class="mono" id="term"></pre>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="section-head">
+        <span class="num mono">03</span>
+        <h2>The stu<em>dio</em></h2>
+      </div>
+      <div class="about-grid">
+        <blockquote class="manifesto reveal">
+          A photograph and a piece of software ask the same question:
+          <em>what can be left out?</em> We answer it with patience,
+          good tools and a lot of looking.
+        </blockquote>
+        <aside class="founder reveal">
+          <div class="photo"><img data-tone="light" src="images/yuusuf.jpg" alt="Yuusuf Dahlstrand, founder of Udio Studio" style="object-position: 50% 30%" loading="lazy"></div>
+          <p class="mono">Yuusuf Dahlstrand — Founder</p>
+          <p>Photographer and software engineer. One person behind the camera and the keyboard, with trusted collaborators when a project needs more hands.</p>
+        </aside>
+      </div>
+      <div class="process">
+        <div class="step reveal"><span class="mono">i.</span><h4>Listen</h4><p>A conversation about what you need and why it matters.</p></div>
+        <div class="step reveal"><span class="mono">ii.</span><h4>Sketch</h4><p>Moodboards for a shoot, prototypes for a product. Cheap to change.</p></div>
+        <div class="step reveal"><span class="mono">iii.</span><h4>Make</h4><p>The real work, in the open, with regular check-ins.</p></div>
+        <div class="step reveal"><span class="mono">iv.</span><h4>Deliver</h4><p>Finished files or production code, plus what you need to carry on.</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact" data-nav="red">
+      <div class="contact-grid">
+      <div class="contact-info">
+        <span class="num mono">04</span>
+        <h2>Say <em>hello</em></h2>
+        <p class="section-intro">Tell us about the shoot, the product or the idea. We usually reply within a day or two.</p>
+        <dl class="direct">
+          <dt class="mono">Reply time</dt>
+          <dd>Within 1–2 days</dd>
+        </dl>
+      </div>
+
+      <form class="form" id="contact-form" action="https://formsubmit.co/yuusuf@udiostudio.com" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry via udiostudio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+
+        <fieldset class="topics">
+          <legend class="mono">I'm interested in</legend>
+          <label><input type="radio" name="topic" value="Photography" checked><span>Photography</span></label>
+          <label><input type="radio" name="topic" value="Full-stack development"><span>Full stack</span></label>
+          <label><input type="radio" name="topic" value="AI implementation"><span>AI</span></label>
+          <label><input type="radio" name="topic" value="Something else"><span>Something else</span></label>
+        </fieldset>
+
+        <div class="field"><input id="name" name="name" type="text" placeholder=" " required><label for="name">Your name</label></div>
+        <div class="field"><input id="email" name="email" type="email" placeholder=" " required><label for="email">Email</label></div>
+        <div class="field"><textarea id="message" name="message" rows="4" placeholder=" " required></textarea><label for="message">What are you working on?</label></div>
+
+        <button type="submit" class="send"><span>Send message</span><span class="arrow">→</span></button>
+        <p class="form-status mono" id="form-status" role="status"></p>
+      </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-nav="light">
+    <div class="footer-top">
+      <p class="footer-cta">Have a shoot or a build in mind?<br><a href="#contact">Start a project <span>→</span></a></p>
+      <nav class="footer-links mono" aria-label="Footer">
+        <a href="#photography">Photography</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#about">Studio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-mark" aria-hidden="true"><div class="footer-big">Udio <em>studio</em><span class="sun"></span></div></div>
+    <div class="footer-row mono">
+      <span>© <span id="year"></span> Udio Studio</span>
+      <a href="#contact">Get in touch</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
