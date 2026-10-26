@@ -78,7 +78,7 @@ new IntersectionObserver((entries, obs) => {
   if (entries[0].isIntersecting && !started) { type(); obs.disconnect(); }
 }, { threshold: 0.4 }).observe(term);
 
-// Contact form: send through FormSubmit without leaving the page
+// Contact form: send through Web3Forms without leaving the page
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 form.addEventListener('submit', async (e) => {
@@ -87,13 +87,12 @@ form.addEventListener('submit', async (e) => {
   button.disabled = true;
   status.textContent = 'Sending…';
   try {
-    const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+    const res = await fetch(form.action, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: new FormData(form),
     });
     const data = await res.json();
-    // FormSubmit answers 200 with success "false" (and a reason) e.g. before the form is activated
     if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Request failed');
     form.reset();
     status.textContent = 'Thank you — your message is on its way.';
