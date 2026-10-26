@@ -93,10 +93,12 @@ form.addEventListener('submit', async (e) => {
       body: new FormData(form),
     });
     const data = await res.json();
-    if (!res.ok || data.success === 'false') throw new Error(data.message);
+    // FormSubmit answers 200 with success "false" (and a reason) e.g. before the form is activated
+    if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Request failed');
     form.reset();
     status.textContent = 'Thank you — your message is on its way.';
   } catch (err) {
+    console.error('[contact form]', err.message);
     status.textContent = 'Something went wrong. Please try again in a moment.';
   } finally {
     button.disabled = false;
