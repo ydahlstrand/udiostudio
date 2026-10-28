@@ -78,6 +78,29 @@ new IntersectionObserver((entries, obs) => {
   if (entries[0].isIntersecting && !started) { type(); obs.disconnect(); }
 }, { threshold: 0.4 }).observe(term);
 
+// Drone slideshow: cross-fade every few seconds, click or Enter for the next photo
+const slideBox = document.querySelector('.slides');
+const slides = slideBox.querySelectorAll('img');
+const slideCount = document.querySelector('.slide-count');
+const pad = (n) => String(n).padStart(2, '0');
+let current = 0;
+let timer;
+function showSlide(n) {
+  slides[current].classList.remove('on');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('on');
+  slideCount.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+  updateNav();
+}
+function startSlides() {
+  clearInterval(timer);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => showSlide(current + 1), 4500);
+}
+slideBox.addEventListener('click', () => { showSlide(current + 1); startSlides(); });
+slideBox.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); startSlides(); } });
+slides.forEach((img) => { img.loading = 'eager'; });
+startSlides();
+
 // Contact form: send through Web3Forms without leaving the page
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
