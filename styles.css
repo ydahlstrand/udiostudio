@@ -141,15 +141,16 @@ section { padding: calc(var(--u) * 8) var(--pad); }
 .section-intro { grid-column: 2; max-width: 46ch; margin-top: 1.25rem; font-size: 1.0625rem; color: var(--muted); }
 
 /* DARKROOM */
-.darkroom { background: var(--night); color: var(--paper); }
+.darkroom { background: var(--night); color: var(--paper); container-type: inline-size; }
 .darkroom .section-intro { color: #a59c8f; }
 .gallery {
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: calc(var(--u) * 1.6);
-  grid-auto-rows: calc(var(--u) * 5.5);
+  /* rows scale with the gallery's own width so frame proportions hold on wide screens (5.5u at 1440) */
+  grid-auto-rows: 5.98cqw;
 }
 .frame { position: relative; display: flex; flex-direction: column; min-height: 0; }
-.f1 { grid-column: 1 / 9; grid-row: 1 / 7; }   /* ~16:9 for the drone slideshow */
-.f2 { grid-column: 10 / 13; grid-row: 2 / 5; }
+.f1 { grid-column: 1 / 11; grid-row: 1 / 7; }  /* photo ~16:9 plus the thumbnail column */
+.f2 { grid-column: 1 / 5; grid-row: 8 / 11; }
 .f3 { grid-column: 5 / 13; grid-row: 8 / 13; }  /* ~2:1, matches the panorama */
 .f4 { grid-column: 1 / 5; grid-row: 12 / 16; }
 .f5 { grid-column: 6 / 12; grid-row: 14 / 19; } /* ~3:2 */
@@ -169,6 +170,17 @@ section { padding: calc(var(--u) * 8) var(--pad); }
 .slides img.on { opacity: 1; pointer-events: auto; }
 .slides:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
 .slide-count { color: var(--red); }
+/* thumbnail selector: small squares stacked beside the slideshow */
+.viewer { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) calc(var(--u) * 6.5); gap: calc(var(--u) * .8); }
+.thumbs { display: flex; flex-direction: column; justify-content: space-between; gap: calc(var(--u) * .8); min-height: 0; }
+.thumb {
+  display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 0; background: #1c1a18;
+  cursor: pointer; opacity: .4; transition: opacity .3s, box-shadow .3s;
+}
+.thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.thumb:hover { opacity: .75; }
+.thumb.on { opacity: 1; box-shadow: 0 0 0 2px var(--red); }
+.thumb:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
 .offer {
   list-style: none; margin-top: calc(var(--u) * 6);
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 1.5rem;
@@ -318,6 +330,9 @@ section { padding: calc(var(--u) * 8) var(--pad); }
   .frame .photo { flex: none; aspect-ratio: 3/4; }
   .f1 .photo { aspect-ratio: 16/9; }
   .f3 .photo { aspect-ratio: 16/10; }
+  .viewer { grid-template-columns: 1fr; }
+  .thumbs { flex-direction: row; justify-content: flex-start; }
+  .thumb { width: calc((100% - 4 * var(--u) * .8) / 5); max-width: 88px; }
   .f1, .f3 { grid-column: 1 / -1 !important; }
   .f2, .f5 { margin-top: 15%; }
   .offer, .process { grid-template-columns: 1fr 1fr; }

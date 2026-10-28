@@ -78,10 +78,11 @@ new IntersectionObserver((entries, obs) => {
   if (entries[0].isIntersecting && !started) { type(); obs.disconnect(); }
 }, { threshold: 0.4 }).observe(term);
 
-// Drone slideshow: cross-fade every few seconds, click or Enter for the next photo
+// Drone slideshow: cross-fade every few seconds; thumbnails pick a photo, clicking the photo shows the next
 const slideBox = document.querySelector('.slides');
 const slides = slideBox.querySelectorAll('img');
 const slideCount = document.querySelector('.slide-count');
+const thumbs = document.querySelectorAll('.thumb');
 const pad = (n) => String(n).padStart(2, '0');
 let current = 0;
 let timer;
@@ -89,6 +90,7 @@ function showSlide(n) {
   slides[current].classList.remove('on');
   current = (n + slides.length) % slides.length;
   slides[current].classList.add('on');
+  thumbs.forEach((t, i) => { t.classList.toggle('on', i === current); t.setAttribute('aria-selected', i === current); });
   slideCount.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
   updateNav();
 }
@@ -98,6 +100,7 @@ function startSlides() {
 }
 slideBox.addEventListener('click', () => { showSlide(current + 1); startSlides(); });
 slideBox.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); startSlides(); } });
+thumbs.forEach((t, i) => t.addEventListener('click', () => { showSlide(i); startSlides(); }));
 slides.forEach((img) => { img.loading = 'eager'; });
 startSlides();
 
