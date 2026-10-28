@@ -149,11 +149,11 @@ section { padding: calc(var(--u) * 8) var(--pad); }
   grid-auto-rows: 5.98cqw;
 }
 .frame { position: relative; display: flex; flex-direction: column; min-height: 0; }
-.f1 { grid-column: 1 / 11; grid-row: 1 / 7; }  /* photo ~16:9 plus the thumbnail column */
-.f2 { grid-column: 1 / 5; grid-row: 8 / 11; }
-.f3 { grid-column: 5 / 13; grid-row: 8 / 13; }  /* ~2:1, matches the panorama */
-.f4 { grid-column: 1 / 5; grid-row: 12 / 16; }
-.f5 { grid-column: 6 / 12; grid-row: 14 / 19; } /* ~3:2 */
+.f1 { grid-column: 1 / 9; grid-row: 1 / 6; }   /* photo ~16:9 plus the thumbnail column */
+.f2 { grid-column: 10 / 13; grid-row: 2 / 5; }
+.f3 { grid-column: 5 / 13; grid-row: 7 / 12; }  /* ~2:1, matches the panorama */
+.f4 { grid-column: 1 / 5; grid-row: 11 / 15; }
+.f5 { grid-column: 6 / 12; grid-row: 13 / 18; } /* ~3:2 */
 .photo {
   width: 100%; flex: 1; min-height: 0; overflow: hidden;
   background: #1c1a18;
