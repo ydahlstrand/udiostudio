@@ -78,31 +78,34 @@ new IntersectionObserver((entries, obs) => {
   if (entries[0].isIntersecting && !started) { type(); obs.disconnect(); }
 }, { threshold: 0.4 }).observe(term);
 
-// Drone slideshow: cross-fade every few seconds; thumbnails pick a photo, clicking the photo shows the next
-const slideBox = document.querySelector('.slides');
-const slides = slideBox.querySelectorAll('img');
-const slideCount = document.querySelector('.slide-count');
-const thumbs = document.querySelectorAll('.thumb');
+// Slideshows (drone, brand): cross-fade every few seconds; thumbnails pick a photo, clicking the photo shows the next
 const pad = (n) => String(n).padStart(2, '0');
-let current = 0;
-let timer;
-function showSlide(n) {
-  slides[current].classList.remove('on');
-  current = (n + slides.length) % slides.length;
-  slides[current].classList.add('on');
-  thumbs.forEach((t, i) => { t.classList.toggle('on', i === current); t.setAttribute('aria-selected', i === current); });
-  slideCount.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
-  updateNav();
-}
-function startSlides() {
-  clearInterval(timer);
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => showSlide(current + 1), 4500);
-}
-slideBox.addEventListener('click', () => { showSlide(current + 1); startSlides(); });
-slideBox.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showSlide(current + 1); startSlides(); } });
-thumbs.forEach((t, i) => t.addEventListener('click', () => { showSlide(i); startSlides(); }));
-slides.forEach((img) => { img.loading = 'eager'; });
-startSlides();
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.viewer').forEach((viewer) => {
+  const box = viewer.querySelector('.slides');
+  const slides = box.querySelectorAll('img');
+  const thumbs = viewer.querySelectorAll('.thumb');
+  const count = viewer.closest('.frame').querySelector('.slide-count');
+  let current = 0;
+  let timer;
+  function show(n) {
+    slides[current].classList.remove('on');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('on');
+    thumbs.forEach((t, i) => { t.classList.toggle('on', i === current); t.setAttribute('aria-selected', i === current); });
+    count.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+    updateNav();
+  }
+  function start() {
+    clearInterval(timer);
+    if (!reduceMotion) timer = setInterval(() => show(current + 1), 4500);
+  }
+  box.addEventListener('click', () => { show(current + 1); start(); });
+  box.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(current + 1); start(); } });
+  thumbs.forEach((t, i) => t.addEventListener('click', () => { show(i); start(); }));
+  slides.forEach((img) => { img.loading = 'eager'; });
+  start();
+});
 
 // Contact form: send through Web3Forms without leaving the page
 const form = document.getElementById('contact-form');

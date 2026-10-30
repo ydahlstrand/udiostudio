@@ -151,7 +151,7 @@ section { padding: calc(var(--u) * 8) var(--pad); }
 .frame { position: relative; display: flex; flex-direction: column; min-height: 0; }
 .f1 { grid-column: 1 / 9; grid-row: 1 / 6; }   /* photo ~16:9 plus the thumbnail column */
 .f2 { grid-column: 10 / 13; grid-row: 2 / 5; }
-.f3 { grid-column: 5 / 13; grid-row: 7 / 12; }  /* ~2:1, matches the panorama */
+.f3 { grid-column: 5 / 13; grid-row: 7 / 12; }  /* brand slideshow, wide */
 .f4 { grid-column: 1 / 5; grid-row: 11 / 15; }
 .f5 { grid-column: 6 / 12; grid-row: 13 / 18; } /* ~3:2 */
 .photo {
@@ -329,12 +329,11 @@ section { padding: calc(var(--u) * 8) var(--pad); }
   .frame { grid-column: auto !important; grid-row: auto !important; }
   .frame .photo { flex: none; aspect-ratio: 3/4; }
   .f1 .photo { aspect-ratio: 16/9; }
-  .f3 .photo { aspect-ratio: 16/10; }
+  .f3 .photo, .f5 .photo { aspect-ratio: 3/2; }
   .viewer { grid-template-columns: 1fr; }
   .thumbs { flex-direction: row; justify-content: flex-start; }
   .thumb { width: 44px; }
-  .f1, .f3 { grid-column: 1 / -1 !important; }
-  .f2, .f5 { margin-top: 15%; }
+  .f1, .f3, .f5 { grid-column: 1 / -1 !important; }
   .offer, .process { grid-template-columns: 1fr 1fr; }
   .terminal { width: 100%; }
 }
@@ -355,7 +354,6 @@ section { padding: calc(var(--u) * 8) var(--pad); }
   .num { padding-top: 0; margin-bottom: .5rem; }
   .gallery { gap: .75rem; }
   .f1 .photo { aspect-ratio: 16/9; }
-  .f3 .photo { aspect-ratio: 4/3; }
   .offer, .process { grid-template-columns: 1fr; }
   .card { display: flex; }
   .card h3 { margin-top: .75rem; min-height: 0; }
